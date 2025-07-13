@@ -1,0 +1,9 @@
+make BOARD=sensorwatch_pro DISPLAY=classic
+
+emmake make BOARD=sensorwatch_pro DISPLAY=classic
+
+python3 -m http.server -d build-sim
+
+http://localhost:8000/firmware.html
+
+git submodule update --remote --recursive

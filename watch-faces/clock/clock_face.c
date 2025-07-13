@@ -238,7 +238,7 @@ bool clock_face_loop(movement_event_t event, void *context) {
 
     switch (event.event_type) {
         case EVENT_LOW_ENERGY_UPDATE:
-            clock_start_tick_tock_animation();
+            // clock_start_tick_tock_animation();
             clock_display_low_energy(movement_get_local_date_time());
             break;
         case EVENT_TICK:
