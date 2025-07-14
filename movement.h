@@ -254,6 +254,7 @@ typedef struct {
 
     // LED stuff
     int16_t light_ticks;
+    bool wake_with_light;
 
     // alarm stuff
     int16_t alarm_ticks;

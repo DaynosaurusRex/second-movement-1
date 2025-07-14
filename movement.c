@@ -266,6 +266,11 @@ bool movement_default_loop_handler(movement_event_t event) {
             }
             break;
         default:
+            // hack to get the light to turn on after waking.
+            if (movement_state.wake_with_light == true) {
+                movement_state.wake_with_light = false;
+                movement_illuminate_led();
+            }
             break;
     }
 
@@ -1010,12 +1015,13 @@ void cb_alarm_btn_interrupt(void) {
     bool pin_level = HAL_GPIO_BTN_ALARM_read();
     _movement_reset_inactivity_countdown();
     event.event_type = _figure_out_button_event(pin_level, EVENT_ALARM_BUTTON_DOWN, &movement_state.alarm_down_timestamp);
+    movement_illuminate_led();
 }
 
 void cb_alarm_btn_extwake(void) {
+    movement_state.wake_with_light = true;
     // wake up!
     _movement_reset_inactivity_countdown();
-    movement_illuminate_led();
 }
 
 void cb_alarm_fired(void) {

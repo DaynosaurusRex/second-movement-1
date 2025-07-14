@@ -251,6 +251,9 @@ bool clock_face_loop(movement_event_t event, void *context) {
 
             state->date_time.previous = current;
 
+            // Hack to get to the movement loop (to turn on the light if we're waking).
+            return movement_default_loop_handler(event);
+
             break;
         case EVENT_ALARM_LONG_PRESS:
             clock_toggle_time_signal(state);
