@@ -1015,7 +1015,6 @@ void cb_alarm_btn_interrupt(void) {
     bool pin_level = HAL_GPIO_BTN_ALARM_read();
     _movement_reset_inactivity_countdown();
     event.event_type = _figure_out_button_event(pin_level, EVENT_ALARM_BUTTON_DOWN, &movement_state.alarm_down_timestamp);
-    movement_illuminate_led();
 }
 
 void cb_alarm_btn_extwake(void) {
